@@ -1,10 +1,12 @@
 import {Grid, Button, Box} from '@mui/material';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
-
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 export default () => {
   return (
-    <Box sx={{maxWidth:'500px', m:'auto', p:1}}>
+    <Box sx={{maxWidth:'200px', m:'auto', p:1}}>
       <Grid container alignItems="center">
         <Grid item xs={4}/>
         <Grid item xs={4}>
@@ -21,14 +23,14 @@ export default () => {
           <Button
             fullWidth
             size="large"
-            children={<ArrowUpwardIcon/>}/>
+            children={<ArrowBackIcon/>}/>
         </Grid>
         <Grid item xs={4}/>
         <Grid item xs={4}>
           <Button
             fullWidth
             size="large"
-            children={<ArrowUpwardIcon/>}/>
+            children={<ArrowForwardIcon/>}/>
         </Grid>
       </Grid>
       <Grid container>
@@ -37,7 +39,7 @@ export default () => {
           <Button
             fullWidth
             size="large"
-            children={<ArrowUpwardIcon/>}/>
+            children={<ArrowDownwardIcon/>}/>
         </Grid>
         <Grid item xs={4}/>
       </Grid>

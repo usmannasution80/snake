@@ -7,7 +7,5 @@ export default {
       return dict[key];
     return '';
   },
-  navigationOnClick(e, direction){
-    return;
-  }
+  navigationOnClick : e => e,
 };

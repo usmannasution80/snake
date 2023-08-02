@@ -7,7 +7,21 @@ export default () => {
     _
   } = window.web;
 
-  const [active, setActive] = useState('new_game');
+  const sections = [
+    'new_game',
+    'highscores',
+    'options'
+  ];
+  const [active, setActive] = useState(0);
+
+  window.web.navigationOnClick = (e, direction) => {
+    if(direction === 'up')
+      setActive(active <= 0 ? sections.length - 1 : active - 1);
+    else if(direction === 'down')
+      setActive(active >= sections.length - 1 ? 0 : active + 1);
+  };
+
+  const variant = section => section === sections[active] ? 'contained' : 'outlined';
 
   return (
     <>
@@ -17,14 +31,18 @@ export default () => {
         children={_('main_menu')}/>
       <Button
         fullWidth
-        children={_('new_game')}/>
+        variant={variant(sections[0])}
+        children={_(sections[0])}/>
       <Button
         fullWidth
+        variant={variant(sections[1])}
         sx={{my:1}}
-        children={_('highscores')}/>
+        children={_(sections[1])}/>
       <Button
         fullWidth
-        children={_('options')}/>
+        variant={variant(sections[2])}
+        children={_(sections[2])}/>
+      <Button>{active}</Button>
     </>
   );
 };

@@ -3,4 +3,5 @@ export default {
   'highscores' : 'Skor Tertinggi',
   'options' : 'Opsi',
   'main_menu' : 'Main Menu',
+  'select' : 'Pilih',
 };

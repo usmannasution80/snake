@@ -8,4 +8,10 @@ export default {
     return '';
   },
   navigationOnClick : e => e,
+  selectOnClick : e => e,
+  mainMenuOnClick : e => {
+    window.web.navigate('/');
+  },
+  navigate : path => path,
+  render : () => undefined,
 };

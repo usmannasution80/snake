@@ -7,7 +7,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 export default () => {
 
   return (
-    <Box sx={{maxWidth:'200px', m:'auto', p:1}}>
+    <Box sx={{maxWidth:'200px', m:'auto'}}>
       <Grid container alignItems="center">
         <Grid item xs={4}/>
         <Grid item xs={4}>

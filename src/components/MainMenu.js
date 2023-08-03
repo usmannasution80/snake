@@ -4,7 +4,8 @@ import {Button, Box} from '@mui/material';
 export default () => {
 
   const {
-    _
+    _,
+    navigate
   } = window.web;
 
   const sections = [
@@ -19,6 +20,13 @@ export default () => {
       setActive(active <= 0 ? sections.length - 1 : active - 1);
     else if(direction === 'down')
       setActive(active >= sections.length - 1 ? 0 : active + 1);
+  };
+  window.web.selectOnClick = e => {
+    switch (active) {
+      case 0:
+        navigate('/game');
+        break;
+    }
   };
 
   const variant = section => section === sections[active] ? 'contained' : 'outlined';

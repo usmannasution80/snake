@@ -6,15 +6,13 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 export default () => {
 
-  const {navigationOnClick} = window.web;
-
   return (
     <Box sx={{maxWidth:'200px', m:'auto', p:1}}>
       <Grid container alignItems="center">
         <Grid item xs={4}/>
         <Grid item xs={4}>
           <Button
-            onClick={e => navigationOnClick(e, 'up')}
+            onClick={e => window.web.navigationOnClick(e, 'up')}
             size="large"
             children={<ArrowUpwardIcon/>}/>
         </Grid>
@@ -23,14 +21,14 @@ export default () => {
       <Grid container sx={{my:1}}>
         <Grid item xs={4}>
           <Button
-            onClick={e => navigationOnClick(e, 'left')}
+            onClick={e => window.web.navigationOnClick(e, 'left')}
             size="large"
             children={<ArrowBackIcon/>}/>
         </Grid>
         <Grid item xs={4}/>
         <Grid item xs={4}>
           <Button
-            onClick={e => navigationOnClick(e, 'right')}
+            onClick={e => window.web.navigationOnClick(e, 'right')}
             size="large"
             children={<ArrowForwardIcon/>}/>
         </Grid>
@@ -39,7 +37,7 @@ export default () => {
         <Grid item xs={4}/>
         <Grid item xs={4}>
           <Button
-            onClick={e => navigationOnClick(e, 'down')}
+            onClick={e => window.web.navigationOnClick(e, 'down')}
             size="large"
             children={<ArrowDownwardIcon/>}/>
         </Grid>

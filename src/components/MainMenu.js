@@ -42,7 +42,6 @@ export default () => {
         fullWidth
         variant={variant(sections[2])}
         children={_(sections[2])}/>
-      <Button>{active}</Button>
     </>
   );
 };

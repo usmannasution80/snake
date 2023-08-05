@@ -23,9 +23,15 @@ export default () => {
   };
 
   window.web.selectOnClick = e => {
-    switch (active) {
+    switch (active){
       case 0:
         navigate('/game');
+        break;
+      case 1:
+        navigate('/highscores');
+        break;
+      case 2:
+        navigate('/options');
         break;
     }
   };

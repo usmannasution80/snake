@@ -1,4 +1,7 @@
 import {Box} from '@mui/material';
+import SnakeHead from './SnakeHead';
+import SnakeBody from './SnakeBody';
+import SnakeTail from './SnakeTail';
 
 export default () => {
   const {_} = window.web;
@@ -16,7 +19,21 @@ export default () => {
             background:'white'
           }}
           viewBox="0 0 20 20">
-          <svg width="300" height="100" style={{fill:'rgb(0,0,255)',strokeWidth:3,stroke:'rgb(0,0,0)'}} />
+
+          <SnakeHead
+            direction="bottom"
+            x={0}
+            y={0}/>
+
+          <SnakeBody
+            x={1}
+            y={1}/>
+
+          <SnakeTail
+            direction="right"
+            x={2}
+            y={2}/>
+
         </svg>
       </Box>
     </>

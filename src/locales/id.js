@@ -4,4 +4,5 @@ export default {
   'options' : 'Opsi',
   'main_menu' : 'Main Menu',
   'select' : 'Pilih',
+  'score' : 'Skor',
 };

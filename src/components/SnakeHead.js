@@ -62,6 +62,29 @@ export default (props) => {
       viewBox="0 0 5 5">
 
       <rect
+        width={5}
+        height={5}
+        fill="black"
+        x={0}
+        y={0}/>
+
+      <svg
+        width={4}
+        height={4}
+        x={0.5}
+        y={0.5}
+        viewBox="0 0 5 5">
+
+        <rect
+          width={5}
+          height={5}
+          x={0}
+          y={0}
+          fill={window.web.snakeColor}/>
+
+      </svg>
+
+      <rect
         x={coordinates.leftEye[0]}
         y={coordinates.leftEye[1]}
         fill="black"

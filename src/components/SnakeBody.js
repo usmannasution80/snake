@@ -24,7 +24,7 @@ export default (props) => {
             y={0}
             width={5}
             height={5}
-            fill="white"/>
+            fill={window.web.snakeColor}/>
         </svg>
     </svg>
   );

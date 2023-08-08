@@ -35,7 +35,7 @@ export default (props) => {
         y={0.5}>
         <polygon
           points={points}
-          fill="white"/>
+          fill={window.web.snakeColor}/>
       </svg>
     </svg>
   );

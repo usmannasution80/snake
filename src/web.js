@@ -7,6 +7,7 @@ export default {
       return dict[key];
     return '';
   },
+  snakeColor : 'yellow',
   navigationOnClick : e => e,
   selectOnClick : e => e,
   mainMenuOnClick : e => {

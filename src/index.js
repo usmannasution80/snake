@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import 'index.css';
+import App from 'App';
+import reportWebVitals from 'reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
-import theme from './theme';
+import theme from 'theme';
 import {ThemeProvider} from '@mui/material/styles';
-import web from './web';
+import web from 'web';
 
 window.web = web;
 

@@ -1,9 +1,9 @@
 import {Paper, Grid} from '@mui/material';
 import {useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
-import MyRoutes from './components/MyRoutes';
-import Navigation from './components/Navigation';
-import InteractionButtons from './components/InteractionButtons';
+import MyRoutes from 'components/MyRoutes';
+import Navigation from 'components/Navigation';
+import InteractionButtons from 'components/InteractionButtons';
 
 export default () => {
 

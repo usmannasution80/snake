@@ -1,8 +1,8 @@
 import {Routes, Route} from 'react-router-dom';
-import MainMenu from './MainMenu';
-import GameField from './GameField';
-import Highscores from './Highscores';
-import Options from './Options';
+import MainMenu from 'components/MainMenu';
+import GameField from 'components/GameField';
+import Highscores from 'components/Highscores';
+import Options from 'components/Options';
 
 export default () => {
   return (

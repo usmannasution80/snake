@@ -1,7 +1,7 @@
 import {Box} from '@mui/material';
-import SnakeHead from './SnakeHead';
-import SnakeBody from './SnakeBody';
-import SnakeTail from './SnakeTail';
+import SnakeHead from 'components/SnakeHead';
+import SnakeBody from 'components/SnakeBody';
+import SnakeTail from 'components/SnakeTail';
 
 export default () => {
   const {_} = window.web;

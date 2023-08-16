@@ -6,9 +6,6 @@ import reportWebVitals from 'reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
 import theme from 'theme';
 import {ThemeProvider} from '@mui/material/styles';
-import web from 'web';
-
-window.web = web;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

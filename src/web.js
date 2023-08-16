@@ -15,4 +15,14 @@ export default {
   },
   navigate : path => path,
   render : () => undefined,
+  strg(key, value){
+    if(value === undefined)
+      return window.localStorage.getItem(key);
+    window.localStorage.setItem(key, value);
+    window.dispatchEvent(new Event('storage'));
+  },
+  dstrg(key){
+    window.localStorage.removeItem(key);
+    window.dispatchEvent(new Event('storage'));
+  }
 };

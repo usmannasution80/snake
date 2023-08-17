@@ -4,7 +4,22 @@ import SnakeBody from 'components/SnakeBody';
 import SnakeTail from 'components/SnakeTail';
 
 export default () => {
-  const {_} = window.web;
+  const {
+    _,
+    strg
+  } = window.web;
+  if(!strg('coordinates')){
+    strg('coordinates', JSON.stringify([
+      [0, 0, 'right'],
+      [1, 0],
+      [2, 0, 'right']
+    ]));
+    return <></>;
+  }
+  const coordinates = JSON.parse(strg('coordinates'));
+  const len = coordinates.length;
+  const head = coordinates[len - 1];
+  const tail = coordinates[0];
   return (
     <>
       <Box
@@ -21,18 +36,28 @@ export default () => {
           viewBox="0 0 20 20">
 
           <SnakeHead
-            direction="bottom"
-            x={0}
-            y={0}/>
+            direction={head[2]}
+            x={head[0]}
+            y={head[1]}/>
 
-          <SnakeBody
-            x={1}
-            y={1}/>
+          {(() => {
+            const bodies = [];
+            for(let i = 1;i < len-1; i++){
+              let [x, y] = coordinates[i];
+              bodies.push(
+                <SnakeBody
+                  key={String(i)}
+                  x={x}
+                  y={y}/>
+              );
+            }
+            return bodies;
+          })()}
 
           <SnakeTail
-            direction="right"
-            x={2}
-            y={2}/>
+            direction={tail[2]}
+            x={tail[0]}
+            y={tail[1]}/>
 
         </svg>
       </Box>

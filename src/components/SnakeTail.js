@@ -6,7 +6,7 @@ export default (props) => {
       case 'up':
         points = '0,5 5,5 2.5,0';
         break;
-      case 'bottom':
+      case 'down':
         points = '0,0 5,0 2.5,5';
         break;
       case 'left':

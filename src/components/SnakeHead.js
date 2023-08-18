@@ -18,7 +18,7 @@ export default (props) => {
         };
         break;
 
-      case 'bottom':
+      case 'down':
         mouthWidth  = 3;
         mouthHeight = 1;
         coordinates = {

@@ -83,7 +83,7 @@ export default () => {
           viewBox="0 0 20 20">
 
           <SnakeHead
-            direction={head[2]}
+            direction={direction.current}
             x={head[0]}
             y={head[1]}/>
 

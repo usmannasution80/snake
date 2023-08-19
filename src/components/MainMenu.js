@@ -5,10 +5,13 @@ export default () => {
 
   const {
     _,
-    navigate
+    navigate,
+    dstrg,
+    strg
   } = window.web;
 
   const sections = [
+    'resume',
     'new_game',
     'highscores',
     'options'
@@ -28,9 +31,13 @@ export default () => {
         navigate('/game');
         break;
       case 1:
-        navigate('/highscores');
+        dstrg('coordinates');
+        navigate('/game');
         break;
       case 2:
+        navigate('/highscores');
+        break;
+      case 3:
         navigate('/options');
         break;
     }
@@ -46,17 +53,22 @@ export default () => {
         children={_('main_menu')}/>
       <Button
         fullWidth
+        sx={{mb:1,display:strg('coordinates') ? undefined : 'none'}}
         variant={variant(sections[0])}
         children={_(sections[0])}/>
       <Button
         fullWidth
         variant={variant(sections[1])}
-        sx={{my:1}}
         children={_(sections[1])}/>
       <Button
         fullWidth
         variant={variant(sections[2])}
+        sx={{my:1}}
         children={_(sections[2])}/>
+      <Button
+        fullWidth
+        variant={variant(sections[3])}
+        children={_(sections[3])}/>
     </>
   );
 };

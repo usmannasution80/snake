@@ -1,4 +1,4 @@
-export default (props) => {
+function SnakeHead(props){
   const {direction, x, y} = props;
   let mouthHeight;
   let mouthWidth;
@@ -108,3 +108,5 @@ export default (props) => {
     </svg>
   );
 };
+
+export default SnakeHead;

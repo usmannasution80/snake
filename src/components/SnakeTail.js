@@ -1,4 +1,4 @@
-export default (props) => {
+function SnakeTail(props){
   const {direction, x, y} = props;
   const points = (() => {
     let points;
@@ -40,3 +40,5 @@ export default (props) => {
     </svg>
   );
 };
+
+export default SnakeTail;

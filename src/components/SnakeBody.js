@@ -1,4 +1,4 @@
-export default (props) => {
+function SnakeBody(props){
   const {x, y} = props;
   return (
     <svg
@@ -29,3 +29,5 @@ export default (props) => {
     </svg>
   );
 };
+
+export default SnakeBody;

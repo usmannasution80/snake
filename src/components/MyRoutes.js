@@ -4,7 +4,7 @@ import GameField from 'components/GameField';
 import Highscores from 'components/Highscores';
 import Options from 'components/Options';
 
-export default () => {
+function MyRoutes(){
   return (
     <Routes>
       <Route path="/" element={<MainMenu/>}/>
@@ -14,3 +14,5 @@ export default () => {
     </Routes>
   );
 };
+
+export default MyRoutes;

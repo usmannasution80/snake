@@ -1,7 +1,9 @@
-export default () => {
+function Highscores(){
   return (
     <>
       Highscores
     </>
   );
 };
+
+export default Highscores;

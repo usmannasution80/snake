@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import {Button, Box} from '@mui/material';
 
-export default () => {
+function MainMenu(){
 
   const {
     _,
@@ -72,3 +72,5 @@ export default () => {
     </>
   );
 };
+
+export default MainMenu;

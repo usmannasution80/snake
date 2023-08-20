@@ -3,7 +3,7 @@ import {
   Button
 } from '@mui/material';
 
-export default () => {
+function InteractionButtons(){
   const {_} = window.web;
   return (
     <Box sx={{textAlign:'center'}}>
@@ -20,3 +20,5 @@ export default () => {
     </Box>
   );
 };
+
+export default InteractionButtons;

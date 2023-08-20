@@ -4,27 +4,19 @@ import SnakeHead from 'components/SnakeHead';
 import SnakeBody from 'components/SnakeBody';
 import SnakeTail from 'components/SnakeTail';
 
-export default () => {
+function GameField(){
   const {
     _,
     strg
   } = window.web;
-  if(!strg('coordinates')){
-    strg('coordinates', JSON.stringify([
-      [0, 0, 'right'],
-      [1, 0],
-      [2, 0, 'right']
-    ]));
-    return <></>;
-  }
+  const moveTimeout = useRef(null);
+  const direction = useRef('right');
 
   const coordinates = JSON.parse(strg('coordinates'));
   const len = coordinates.length;
   const head = coordinates[len - 1];
   const tail = coordinates[0];
 
-  const direction = useRef('right');
-  const moveTimeout = useRef(null);
   const move = () => {
     if(moveTimeout.current)
       clearTimeout(moveTimeout.current);
@@ -64,8 +56,18 @@ export default () => {
   };
 
   useEffect(() => {
-    move();
+    if(strg('coordinates'))
+      move();
   }, []);
+
+  if(!strg('coordinates')){
+    strg('coordinates', JSON.stringify([
+      [0, 0, 'right'],
+      [1, 0],
+      [2, 0, 'right']
+    ]));
+    return <></>;
+  }
 
   return (
     <>
@@ -111,3 +113,5 @@ export default () => {
     </>
   );
 };
+
+export default GameField;

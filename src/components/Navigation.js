@@ -4,7 +4,7 @@ import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
-export default () => {
+function Navigation(){
 
   return (
     <Box sx={{maxWidth:'200px', m:'auto'}}>
@@ -46,3 +46,5 @@ export default () => {
     </Box>
   );
 };
+
+export default Navigation;

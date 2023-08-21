@@ -12,7 +12,15 @@ function GameField(){
   const moveTimeout = useRef(null);
   const direction = useRef('right');
 
-  const coordinates = JSON.parse(strg('coordinates'));
+  //const coordinates = JSON.parse(strg('coordinates'));
+  let coordinates;
+  if(strg('coordinates'))
+    coordinates = JSON.parse(strg('coordinates'));
+  else coordinates = [
+    [0, 0, 'right'],
+    [1, 0],
+    [2, 0, 'right']
+  ];
   const len = coordinates.length;
   const head = coordinates[len - 1];
   const tail = coordinates[0];
@@ -56,18 +64,17 @@ function GameField(){
   };
 
   useEffect(() => {
-    if(strg('coordinates'))
-      move();
+    move();
   }, []);
 
-  if(!strg('coordinates')){
+  /*if(!strg('coordinates')){
     strg('coordinates', JSON.stringify([
       [0, 0, 'right'],
       [1, 0],
       [2, 0, 'right']
     ]));
     return <></>;
-  }
+  }*/
 
   return (
     <>

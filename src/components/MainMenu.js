@@ -32,7 +32,7 @@ function MainMenu(){
         break;
       case 1:
         dstrg('coordinates');
-        navigate('/game');
+        setTimeout(() => navigate('/game'), 10);
         break;
       case 2:
         navigate('/highscores');

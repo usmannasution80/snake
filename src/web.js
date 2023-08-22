@@ -3,8 +3,14 @@ import id from './locales/id';
 export default {
   _(key, values){
     let dict = id;
-    if(dict[key])
-      return dict[key];
+    if(dict[key]){
+      let val = dict[key];
+      if(values){
+        for(let k in values)
+          val = val.replace(':' + k, values[k]);
+      }
+      return val;
+    }
     return '';
   },
   snakeColor : 'yellow',

@@ -3,6 +3,7 @@ import MainMenu from 'components/MainMenu';
 import GameField from 'components/GameField';
 import Highscores from 'components/Highscores';
 import Options from 'components/Options';
+import LevelSelection from 'components/LevelSelection';
 
 function MyRoutes(){
   return (
@@ -11,6 +12,7 @@ function MyRoutes(){
       <Route path="/game" element={<GameField/>}/>
       <Route path="/highscores" element={<Highscores/>}/>
       <Route path="/options" element={<Options/>}/>
+      <Route path="/level-selection" element={<LevelSelection/>}/>
     </Routes>
   );
 };

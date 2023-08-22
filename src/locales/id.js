@@ -6,4 +6,5 @@ export default {
   'main_menu' : 'Main Menu',
   'select' : 'Pilih',
   'score' : 'Skor',
+  'level' : 'Level :level'
 };

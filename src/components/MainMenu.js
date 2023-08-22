@@ -34,7 +34,7 @@ function MainMenu(){
         break;
       case 'new_game':
         dstrg('coordinates');
-        setTimeout(() => navigate('/game'), 10);
+        setTimeout(() => navigate('/level-selection'), 10);
         break;
       case 'highscores':
         navigate('/highscores');

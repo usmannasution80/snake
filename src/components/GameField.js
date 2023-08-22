@@ -12,7 +12,6 @@ function GameField(){
   const moveTimeout = useRef(null);
   const direction = useRef('right');
 
-  //const coordinates = JSON.parse(strg('coordinates'));
   let coordinates;
   if(strg('coordinates'))
     coordinates = JSON.parse(strg('coordinates'));

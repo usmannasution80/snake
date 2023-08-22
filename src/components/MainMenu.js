@@ -16,34 +16,37 @@ function MainMenu(){
     'highscores',
     'options'
   ];
-  const [active, setActive] = useState(0);
+  const isThereSaved = !!strg('coordinates');
+  const [active, setActive] = useState(isThereSaved ? 0 : 1);
 
   window.web.navigationOnClick = (e, direction) => {
+    const min = isThereSaved ? 0 : 1;
     if(direction === 'up')
-      setActive(active <= 0 ? sections.length - 1 : active - 1);
+      setActive(active <= min ? sections.length - 1 : active - 1);
     else if(direction === 'down')
-      setActive(active >= sections.length - 1 ? 0 : active + 1);
+      setActive(active >= sections.length - 1 ? min : active + 1);
   };
 
   window.web.selectOnClick = e => {
-    switch (active){
-      case 0:
+    switch (sections[active]){
+      case 'resume':
         navigate('/game');
         break;
-      case 1:
+      case 'new_game':
         dstrg('coordinates');
         setTimeout(() => navigate('/game'), 10);
         break;
-      case 2:
+      case 'highscores':
         navigate('/highscores');
         break;
-      case 3:
+      case 'options':
         navigate('/options');
         break;
     }
   };
 
   const variant = section => section === sections[active] ? 'contained' : 'outlined';
+  let i = isThereSaved ? 0 : 1;
 
   return (
     <>
@@ -51,24 +54,26 @@ function MainMenu(){
         sx={{p:0, m:0, my:1, textAlign:'center'}}
         component="h3"
         children={_('main_menu')}/>
+      {isThereSaved &&
+        <Button
+          fullWidth
+          sx={{mb:1}}
+          variant={variant(sections[i])}
+          children={_(sections[i++])}/>
+      }
       <Button
         fullWidth
-        sx={{mb:1,display:strg('coordinates') ? undefined : 'none'}}
-        variant={variant(sections[0])}
-        children={_(sections[0])}/>
+        variant={variant(sections[i])}
+        children={_(sections[i++])}/>
       <Button
         fullWidth
-        variant={variant(sections[1])}
-        children={_(sections[1])}/>
-      <Button
-        fullWidth
-        variant={variant(sections[2])}
+        variant={variant(sections[i])}
         sx={{my:1}}
-        children={_(sections[2])}/>
+        children={_(sections[i++])}/>
       <Button
         fullWidth
-        variant={variant(sections[3])}
-        children={_(sections[3])}/>
+        variant={variant(sections[i])}
+        children={_(sections[i++])}/>
     </>
   );
 };

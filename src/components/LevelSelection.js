@@ -1,17 +1,30 @@
+import {useState} from 'react';
 import {Button} from '@mui/material';
 import levels from 'levels.js';
 
 function LevelSelection(){
   const {_} = window.web;
+  const max = levels.length;
+  const [active, setActive] = useState(0);
+  window.web.navigationOnClick = (e, direction) => {
+    switch(direction){
+      case 'up':
+        setActive(active > 0 ? active-1 : max-1);
+        break;
+      case 'down':
+        setActive(active < max-1 ? active+1 : 0);
+    }
+  }
   return (
     <>
       {(() => {
         const levelButtons = [];
-        const max = levels.length;
-        for(let i=1;i<=max;i++) levelButtons.push(
+        for(let i=0;i<max;i++) levelButtons.push(
           <Button
             fullWidth
-            children={_('level', {level:i})}/>
+            sx={{mb:1}}
+            variant={i === active ? 'contained' : 'outlined'}
+            children={_('level', {level:i+1})}/>
         );
         return levelButtons;
       })()}

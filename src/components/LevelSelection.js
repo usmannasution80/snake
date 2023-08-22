@@ -3,7 +3,7 @@ import {Button} from '@mui/material';
 import levels from 'levels.js';
 
 function LevelSelection(){
-  const {_} = window.web;
+  const {_, navigate} = window.web;
   const max = levels.length;
   const [active, setActive] = useState(0);
   window.web.navigationOnClick = (e, direction) => {
@@ -14,7 +14,11 @@ function LevelSelection(){
       case 'down':
         setActive(active < max-1 ? active+1 : 0);
     }
-  }
+  };
+  window.web.selectOnClick = e => {
+    strg('level', active);
+    navigate('/game');
+  };
   return (
     <>
       {(() => {

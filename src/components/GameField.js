@@ -64,16 +64,8 @@ function GameField(){
 
   useEffect(() => {
     move();
+    return () => clearTimeout(moveTimeout.current);
   }, []);
-
-  /*if(!strg('coordinates')){
-    strg('coordinates', JSON.stringify([
-      [0, 0, 'right'],
-      [1, 0],
-      [2, 0, 'right']
-    ]));
-    return <></>;
-  }*/
 
   return (
     <>

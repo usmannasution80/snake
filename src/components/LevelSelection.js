@@ -25,6 +25,7 @@ function LevelSelection(){
         const levelButtons = [];
         for(let i=0;i<max;i++) levelButtons.push(
           <Button
+            key={String(i)}
             fullWidth
             sx={{mb:1}}
             variant={i === active ? 'contained' : 'outlined'}

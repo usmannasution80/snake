@@ -3,7 +3,7 @@ import {Button} from '@mui/material';
 import levels from 'levels.js';
 
 function LevelSelection(){
-  const {_, navigate} = window.web;
+  const {_, navigate, strg} = window.web;
   const max = levels.length;
   const [active, setActive] = useState(0);
   window.web.navigationOnClick = (e, direction) => {

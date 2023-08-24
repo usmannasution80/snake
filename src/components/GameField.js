@@ -3,6 +3,7 @@ import {useRef, useEffect} from 'react';
 import SnakeHead from 'components/SnakeHead';
 import SnakeBody from 'components/SnakeBody';
 import SnakeTail from 'components/SnakeTail';
+import Food from 'components/Food';
 
 function GameField(){
   const {
@@ -105,6 +106,7 @@ function GameField(){
             direction={tail[2]}
             x={tail[0]}
             y={tail[1]}/>
+          <Food x={10} y={10}/>
 
         </svg>
       </Box>

@@ -4,6 +4,7 @@ import SnakeHead from 'components/SnakeHead';
 import SnakeBody from 'components/SnakeBody';
 import SnakeTail from 'components/SnakeTail';
 import Food from 'components/Food';
+import Obstacle from 'components/Obstacle';
 
 function GameField(){
   const {
@@ -107,6 +108,7 @@ function GameField(){
             x={tail[0]}
             y={tail[1]}/>
           <Food x={10} y={10}/>
+          <Obstacle x={12} y={12}/>
 
         </svg>
       </Box>

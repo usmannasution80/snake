@@ -5,6 +5,7 @@ import SnakeBody from 'components/SnakeBody';
 import SnakeTail from 'components/SnakeTail';
 import Food from 'components/Food';
 import Obstacle from 'components/Obstacle';
+import levels from 'levels';
 
 function GameField(){
   const {
@@ -107,8 +108,16 @@ function GameField(){
             direction={tail[2]}
             x={tail[0]}
             y={tail[1]}/>
-          <Food x={10} y={10}/>
-          <Obstacle x={12} y={12}/>
+
+          {(() => {
+            const obstacles = [];
+            for(let coordinate of levels[parseInt(strg('level') || 0)]){
+              obstacles.push(
+                <Obstacle x={coordinate[0]} y={coordinate[1]}/>
+              );
+            }
+            return obstacles;
+          })()}
 
         </svg>
       </Box>

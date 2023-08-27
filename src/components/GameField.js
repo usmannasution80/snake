@@ -111,7 +111,8 @@ function GameField(){
 
           {(() => {
             const obstacles = [];
-            for(let coordinate of levels[parseInt(strg('level') || 0)]){
+            const level = parseInt(strg('level') || 1);
+            for(let coordinate of levels[level]){
               obstacles.push(
                 <Obstacle x={coordinate[0]} y={coordinate[1]}/>
               );

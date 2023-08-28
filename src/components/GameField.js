@@ -14,6 +14,7 @@ function GameField(){
   } = window.web;
   const moveTimeout = useRef(null);
   const direction = useRef('right');
+  const food = useRef(null);
 
   let coordinates;
   if(strg('coordinates'))
@@ -23,6 +24,33 @@ function GameField(){
     [1, 0],
     [2, 0, 'right']
   ];
+
+  const refreshFood = () => {
+    let x, y;
+    const isBody = () => {
+      for(let i=0;i<coordinates.length;i++){
+        let [x1, y1] = coordinates[i];
+        if(x === x1 && y === y1)
+          return true;
+      }
+      return false;
+    };
+    const isObstacle = () => {
+      const obstacles = levels[parseInt(strg('level') || 0)];
+      for(let i=0;i<obstacles.length;i++){
+        let [x1, y1] = obstacles[i];
+        if(x === x1 && y === y1)
+          return true;
+      }
+      return false;
+    };
+    do{
+      x = Math.floor(Math.random() * 20);
+      y = Math.floor(Math.random() * 20);
+    }while(isBody() || isObstacle());
+    food.current = [x, y];
+  };
+
   const len = coordinates.length;
   const head = coordinates[len - 1];
   const tail = coordinates[0];
@@ -67,6 +95,7 @@ function GameField(){
 
   useEffect(() => {
     move();
+    refreshFood();
     return () => clearTimeout(moveTimeout.current);
   }, []);
 
@@ -119,6 +148,11 @@ function GameField(){
             }
             return obstacles;
           })()}
+          {food.current &&
+            <Food
+              x={food.current[0]}
+              y={food.current[1]}/>
+          }
 
         </svg>
       </Box>

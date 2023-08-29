@@ -15,6 +15,8 @@ function GameField(){
   const moveTimeout = useRef(null);
   const direction = useRef('right');
   const food = useRef(null);
+  const level = parseInt(strg('level') || 0);
+  const obstacles = levels[level];
 
   let coordinates;
   if(strg('coordinates'))
@@ -25,29 +27,30 @@ function GameField(){
     [2, 0, 'right']
   ];
 
+  const isBody = (x, y) => {
+    for(let i=0;i<coordinates.length;i++){
+      let [x1, y1] = coordinates[i];
+      if(x === x1 && y === y1)
+        return true;
+    }
+    return false;
+  };
+
+  const isObstacle = (x, y) => {
+    for(let i=0;i<obstacles.length;i++){
+      let [x1, y1] = obstacles[i];
+      if(x === x1 && y === y1)
+        return true;
+    }
+    return false;
+  };
+
   const refreshFood = () => {
     let x, y;
-    const isBody = () => {
-      for(let i=0;i<coordinates.length;i++){
-        let [x1, y1] = coordinates[i];
-        if(x === x1 && y === y1)
-          return true;
-      }
-      return false;
-    };
-    const isObstacle = () => {
-      const obstacles = levels[parseInt(strg('level') || 0)];
-      for(let i=0;i<obstacles.length;i++){
-        let [x1, y1] = obstacles[i];
-        if(x === x1 && y === y1)
-          return true;
-      }
-      return false;
-    };
     do{
       x = Math.floor(Math.random() * 20);
       y = Math.floor(Math.random() * 20);
-    }while(isBody() || isObstacle());
+    }while(isBody(x, y) || isObstacle(x, y));
     food.current = [x, y];
   };
 
@@ -138,16 +141,12 @@ function GameField(){
             x={tail[0]}
             y={tail[1]}/>
 
-          {(() => {
-            const obstacles = [];
-            const level = parseInt(strg('level') || 1);
-            for(let coordinate of levels[level]){
-              obstacles.push(
-                <Obstacle x={coordinate[0]} y={coordinate[1]}/>
-              );
-            }
-            return obstacles;
-          })()}
+          {
+            obstacles.map(
+              obs => <Obstacle x={obs[0]} y={obs[1]}/>
+            )
+          }
+
           {food.current &&
             <Food
               x={food.current[0]}

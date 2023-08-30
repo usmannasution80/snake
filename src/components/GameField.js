@@ -45,6 +45,11 @@ function GameField(){
     return false;
   };
 
+  const isFood = (x, y) => {
+    const [x1, y1] = food.current;
+    return x === x1 && y === y1;
+  };
+
   const refreshFood = () => {
     let x, y;
     do{

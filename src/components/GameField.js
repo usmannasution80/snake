@@ -108,6 +108,16 @@ function GameField(){
       }
       crdnts[i][0] = x2;
       crdnts[i][1] = y2;
+      if(i === 0){
+        if(x2 > x)
+          crdnts[i][2] = 'right';
+        else if(x2 < x)
+          crdnts[i][2] = 'left';
+        else if(y2 > y)
+          crdnts[i][2] = 'up';
+        else
+          crdnts[i][2] = 'down';
+      }
       x2 = x;
       y2 = y;
     }

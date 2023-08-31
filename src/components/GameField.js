@@ -19,13 +19,16 @@ function GameField(){
   const obstacles = levels[level];
 
   let coordinates;
-  if(strg('coordinates'))
+  if(strg('coordinates')){
     coordinates = JSON.parse(strg('coordinates'));
-  else coordinates = [
-    [0, 0, 'right'],
-    [1, 0],
-    [2, 0, 'right']
-  ];
+  }else{
+    coordinates = [
+      [0, 0, 'right'],
+      [1, 0],
+      [2, 0, 'right']
+    ];
+    strg('coordinates', JSON.stringify(coordinates));
+  }
 
   const isBody = (x, y) => {
     for(let i=0;i<coordinates.length;i++){
@@ -46,6 +49,7 @@ function GameField(){
   };
 
   const isFood = (x, y) => {
+    if(!food.current) return false;
     const [x1, y1] = food.current;
     return x === x1 && y === y1;
   };
@@ -62,28 +66,42 @@ function GameField(){
   const len = coordinates.length;
   const head = coordinates[len - 1];
   const tail = coordinates[0];
+  const interval = 500;
 
   const move = () => {
     if(moveTimeout.current)
       clearTimeout(moveTimeout.current);
-    const crdnts = [...coordinates];
+    if(!strg('coordinates')){
+      console.log('none')
+      moveTimeout.current = setTimeout(move, interval);
+      return;
+    }
+    const crdnts = JSON.parse(strg('coordinates'));
     let x2, y2;
     for(let i=crdnts.length-1;i>=0;i--){
       let [x, y, z] = crdnts[i];
       if(i === crdnts.length-1){
+        let [x0, y0] = [x, y];
         switch(direction.current){
           case 'up':
-            crdnts[i][1] = y - 1;
+            y0 = y - 1;
             break;
           case 'down':
-            crdnts[i][1] = y + 1;
+            y0 = y + 1;
             break;
           case 'left':
-            crdnts[i][0] = x - 1;
+            x0 = x - 1;
             break;
           default:
-            crdnts[i][0] = x + 1;
+            x0 = x + 1;
         }
+        if(isFood(x0, y0)){
+          crdnts.push([x0, y0]);
+          refreshFood();
+          break;
+        }
+        crdnts[i][0] = x0;
+        crdnts[i][1] = y0;
         x2 = x;
         y2 = y;
         continue;
@@ -94,7 +112,7 @@ function GameField(){
       y2 = y;
     }
     strg('coordinates', JSON.stringify(crdnts));
-    moveTimeout.current = setTimeout(move, 500);
+    moveTimeout.current = setTimeout(move, interval);
   };
 
   window.web.navigationOnClick = (e, dir) => {
@@ -102,7 +120,7 @@ function GameField(){
   };
 
   useEffect(() => {
-    move();
+    moveTimeout.current = setTimeout(move, interval);
     refreshFood();
     return () => clearTimeout(moveTimeout.current);
   }, []);

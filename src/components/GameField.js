@@ -13,24 +13,24 @@ function GameField(){
     strg
   } = window.web;
   const moveTimeout = useRef(null);
-  const direction = useRef('right');
   const food = useRef(null);
   const level = parseInt(strg('level') || 0);
   const obstacles = levels[level];
 
-  let coordinates;
-  if(strg('coordinates')){
-    coordinates = JSON.parse(strg('coordinates'));
-  }else{
-    coordinates = [
+  const getCoordinates = () => {
+    if(strg('coordinates'))
+      return JSON.parse(strg('coordinates'));
+    const coordinates = [
       [0, 0, 'right'],
       [1, 0],
-      [2, 0, 'right']
+      [2, 0]
     ];
     strg('coordinates', JSON.stringify(coordinates));
-  }
+    return coordinates;
+  };
 
   const isBody = (x, y) => {
+    const coordinates = getCoordinates();
     for(let i=0;i<coordinates.length;i++){
       let [x1, y1] = coordinates[i];
       if(x === x1 && y === y1)
@@ -63,6 +63,7 @@ function GameField(){
     food.current = [x, y];
   };
 
+  const coordinates = getCoordinates();
   const len = coordinates.length;
   const head = coordinates[len - 1];
   const tail = coordinates[0];
@@ -71,18 +72,13 @@ function GameField(){
   const move = () => {
     if(moveTimeout.current)
       clearTimeout(moveTimeout.current);
-    if(!strg('coordinates')){
-      console.log('none')
-      moveTimeout.current = setTimeout(move, interval);
-      return;
-    }
-    const crdnts = JSON.parse(strg('coordinates'));
+    const crdnts = getCoordinates();
     let x2, y2;
     for(let i=crdnts.length-1;i>=0;i--){
       let [x, y, z] = crdnts[i];
       if(i === crdnts.length-1){
         let [x0, y0] = [x, y];
-        switch(direction.current){
+        switch(strg('direction')){
           case 'up':
             y0 = y - 1;
             break;
@@ -126,7 +122,7 @@ function GameField(){
   };
 
   window.web.navigationOnClick = (e, dir) => {
-    direction.current = dir;
+    strg('direction', dir);
   };
 
   useEffect(() => {
@@ -151,7 +147,7 @@ function GameField(){
           viewBox="0 0 20 20">
 
           <SnakeHead
-            direction={direction.current}
+            direction={strg('direction')}
             x={head[0]}
             y={head[1]}/>
 

@@ -135,7 +135,7 @@ function GameField(){
     <>
       <Box
         sx={{textAlign:'center'}}
-        children={_('score')}/>
+        children={_('score', {score:getCoordinates().length-3})}/>
       <Box sx={{background:'black', overflow:'hidden'}}>
         <svg
           style={{

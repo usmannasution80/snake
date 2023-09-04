@@ -10,7 +10,10 @@ import levels from 'levels';
 function GameField(){
   const {
     _,
-    strg
+    strg,
+    getHighscores,
+    set,
+    navigate
   } = window.web;
   const moveTimeout = useRef(null);
   const food = useRef(null);
@@ -30,6 +33,16 @@ function GameField(){
   };
 
   const getScore = () => getCoordinates().length - 3;
+
+  const gameOver = () => {
+    navigate('/');
+    let highscores = getHighscores();
+    highscores.push({
+      date : new Date().valueOf(),
+      score : getScore()
+    });
+    strg('highscores', JSON.stringify(highscores));
+  };
 
   const isBody = (x, y) => {
     const coordinates = getCoordinates();
@@ -98,6 +111,8 @@ function GameField(){
           refreshFood();
           break;
         }
+        if(isBody(x0, y0) || isObstacle(x0, y0))
+          gameOver();
         crdnts[i][0] = x0;
         crdnts[i][1] = y0;
         x2 = x;

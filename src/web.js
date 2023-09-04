@@ -30,5 +30,11 @@ export default {
   dstrg(key){
     window.localStorage.removeItem(key);
     window.dispatchEvent(new Event('storage'));
+  },
+  getHighscores:function(){
+    let highscores = window.web.strg('highscores');
+    if(highscores)
+      return JSON.parse(highscores);
+    return [];
   }
 };

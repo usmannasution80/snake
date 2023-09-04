@@ -29,6 +29,8 @@ function GameField(){
     return coordinates;
   };
 
+  const getScore = () => getCoordinates().length - 3;
+
   const isBody = (x, y) => {
     const coordinates = getCoordinates();
     for(let i=0;i<coordinates.length;i++){
@@ -135,7 +137,7 @@ function GameField(){
     <>
       <Box
         sx={{textAlign:'center'}}
-        children={_('score', {score:getCoordinates().length-3})}/>
+        children={_('score', {score : getScore()})}/>
       <Box sx={{background:'black', overflow:'hidden'}}>
         <svg
           style={{

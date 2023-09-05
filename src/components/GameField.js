@@ -78,6 +78,10 @@ function GameField(){
     food.current = [x, y];
   };
 
+  const isOutsideField = (x, y) => {
+    return x < 0 || x > 19 || y < 0 || y > 19;
+  };
+
   const coordinates = getCoordinates();
   const len = coordinates.length;
   const head = coordinates[len - 1];
@@ -111,7 +115,7 @@ function GameField(){
           refreshFood();
           break;
         }
-        if(isBody(x0, y0) || isObstacle(x0, y0))
+        if(isBody(x0, y0) || isObstacle(x0, y0) || isOutsideField(x0, y0))
           gameOver();
         crdnts[i][0] = x0;
         crdnts[i][1] = y0;

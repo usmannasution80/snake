@@ -4,6 +4,7 @@ import {useNavigate} from 'react-router-dom';
 import MyRoutes from 'components/MyRoutes';
 import Navigation from 'components/Navigation';
 import InteractionButtons from 'components/InteractionButtons';
+import GameOverDialog from 'components/GameOverDialog';
 import web from 'web';
 
 export default () => {
@@ -35,6 +36,7 @@ export default () => {
           <InteractionButtons/>
         </Grid>
       </Grid>
+      <GameOverDialog/>
     </>
   );
 };

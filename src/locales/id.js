@@ -6,5 +6,7 @@ export default {
   'main_menu' : 'Main Menu',
   'select' : 'Pilih',
   'score' : 'Skor : :score',
-  'level' : 'Level :level'
+  'level' : 'Level :level',
+  'game_over' : 'Game Over',
+  'ok' : 'Ok!'
 };

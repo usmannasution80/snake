@@ -21,6 +21,10 @@ export default {
   },
   navigate : path => path,
   render : () => undefined,
+  set(key, value){
+    window.web[key] = value;
+    window.web.render();
+  },
   strg(key, value){
     if(value === undefined)
       return window.localStorage.getItem(key);

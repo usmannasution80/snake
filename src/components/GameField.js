@@ -42,6 +42,7 @@ function GameField(){
       score : getScore()
     });
     strg('highscores', JSON.stringify(highscores));
+    set('isGameOver', true);
   };
 
   const isBody = (x, y) => {

@@ -12,7 +12,8 @@ function GameOverDialog(){
     set,
     _
   } = window.web;
-  const score = (() => {
+  const score = window.web.gameOverScore;
+  /*const score = (() => {
     let highscores = strg('highscores');
     if(!highscores)
       return 0;
@@ -26,10 +27,10 @@ function GameOverDialog(){
       }
     }
     return score;
-  });
+  });*/
   return (
     <Dialog
-      open={!!window.web.isGameOver}
+      open={typeof score === 'number'}
       fullWidth>
       <DialogTitle children={_('game_over')}/>
       <DialogContent children={_('score', {score})}/>
@@ -37,7 +38,7 @@ function GameOverDialog(){
         <Button
           variant="text"
           children={_('ok')}
-          onClick={e => set('isGameOver', false)}/>
+          onClick={e => set('gameOverScore', undefined)}/>
       </DialogActions>
     </Dialog>
   );

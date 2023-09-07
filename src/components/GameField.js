@@ -11,6 +11,7 @@ function GameField(){
   const {
     _,
     strg,
+    dstrg,
     getHighscores,
     set,
     navigate
@@ -42,7 +43,8 @@ function GameField(){
       score : getScore()
     });
     strg('highscores', JSON.stringify(highscores));
-    set('isGameOver', true);
+    set('gameOverScore', getScore());
+    dstrg('coordinates');
   };
 
   const isBody = (x, y) => {

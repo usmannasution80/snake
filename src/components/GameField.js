@@ -11,7 +11,6 @@ function GameField(){
   const {
     _,
     strg,
-    dstrg,
     getHighscores,
     set,
     navigate
@@ -99,7 +98,7 @@ function GameField(){
     const crdnts = getCoordinates();
     let x2, y2;
     for(let i=crdnts.length-1;i>=0;i--){
-      let [x, y, z] = crdnts[i];
+      let [x, y] = crdnts[i];
       if(i === crdnts.length-1){
         let [x0, y0] = [x, y];
         switch(strg('direction')){
@@ -161,7 +160,6 @@ function GameField(){
     }
   }, []);
 
-  console.log(window.web.gameOverScore + ' - ' + strg('coordinates'))
   return (
     <>
       <Box

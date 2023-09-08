@@ -29,7 +29,7 @@ function GameField(){
       [1, 0],
       [2, 0]
     ];
-    strg('coordinates', JSON.stringify(coordinates));
+    strg('coordinates', JSON.stringify(coordinates), false);
     return coordinates;
   };
 
@@ -37,14 +37,14 @@ function GameField(){
 
   const gameOver = () => {
     navigate('/');
+    clearTimeout(moveTimeout.current);
     let highscores = getHighscores();
     highscores.push({
       date : new Date().valueOf(),
       score : getScore()
     });
-    strg('highscores', JSON.stringify(highscores));
-    set('gameOverScore', getScore());
-    dstrg('coordinates');
+    strg('highscores', JSON.stringify(highscores), false);
+    set('gameOverScore', getScore(), false);
   };
 
   const isBody = (x, y) => {
@@ -92,8 +92,10 @@ function GameField(){
   const interval = 500;
 
   const move = () => {
-    if(moveTimeout.current)
+    if(moveTimeout.current){
       clearTimeout(moveTimeout.current);
+      moveTimeout.current = null;
+    }
     const crdnts = getCoordinates();
     let x2, y2;
     for(let i=crdnts.length-1;i>=0;i--){
@@ -150,11 +152,16 @@ function GameField(){
   };
 
   useEffect(() => {
-    moveTimeout.current = setTimeout(move, interval);
+    if(!moveTimeout.current)
+      moveTimeout.current = setTimeout(move, interval);
     refreshFood();
-    return () => clearTimeout(moveTimeout.current);
+    return () => {
+      clearTimeout(moveTimeout.current);
+      moveTimeout.current = null;
+    }
   }, []);
 
+  console.log(window.web.gameOverScore + ' - ' + strg('coordinates'))
   return (
     <>
       <Box

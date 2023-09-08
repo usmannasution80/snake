@@ -5,29 +5,20 @@ import {
   Button,
   DialogTitle
 } from '@mui/material';
+import {useEffect} from 'react';
 
 function GameOverDialog(){
   const {
+    dstrg,
     strg,
     set,
     _
   } = window.web;
   const score = window.web.gameOverScore;
-  /*const score = (() => {
-    let highscores = strg('highscores');
-    if(!highscores)
-      return 0;
-    highscores = JSON.parse(highscores);
-    let time = 0;
-    let score = 0;
-    for(let score_ of highscores){
-      if(score_.date > time){
-        time = score_.date;
-        score = score_.score;
-      }
-    }
-    return score;
-  });*/
+  useEffect(() => {
+    if(strg('coordinates') && typeof score === 'number')
+      dstrg('coordinates');
+  });
   return (
     <Dialog
       open={typeof score === 'number'}

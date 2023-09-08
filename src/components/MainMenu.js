@@ -49,6 +49,11 @@ function MainMenu(){
   const variant = section => section === sections[active] ? 'contained' : 'outlined';
   let i = isThereSaved ? 0 : 1;
 
+  useEffect(() => {
+    if(!isThereSaved && active < 1)
+      setActive(1);
+  });
+
   return (
     <>
       <Box

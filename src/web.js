@@ -21,19 +21,22 @@ export default {
   },
   navigate : path => path,
   render : () => undefined,
-  set(key, value){
+  set(key, value, rerender = true){
     window.web[key] = value;
-    window.web.render();
+    if(rerender)
+      window.web.render();
   },
-  strg(key, value){
+  strg(key, value, rerender = true){
     if(value === undefined)
       return window.localStorage.getItem(key);
     window.localStorage.setItem(key, value);
-    window.dispatchEvent(new Event('storage'));
+    if(rerender)
+      window.dispatchEvent(new Event('storage'));
   },
-  dstrg(key){
+  dstrg(key, rerender = true){
     window.localStorage.removeItem(key);
-    window.dispatchEvent(new Event('storage'));
+    if(rerender)
+      window.dispatchEvent(new Event('storage'));
   },
   getHighscores:function(){
     let highscores = window.web.strg('highscores');

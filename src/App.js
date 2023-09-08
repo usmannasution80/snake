@@ -7,7 +7,7 @@ import InteractionButtons from 'components/InteractionButtons';
 import GameOverDialog from 'components/GameOverDialog';
 import web from 'web';
 
-export default () => {
+function App(){
 
   if(!window.web)
     window.web = web;
@@ -39,4 +39,6 @@ export default () => {
       <GameOverDialog/>
     </>
   );
-};
+}
+
+export default App;

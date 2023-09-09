@@ -38,7 +38,7 @@ export default {
     if(rerender)
       window.dispatchEvent(new Event('storage'));
   },
-  getHighscores:function(){
+  getHighscores(){
     let highscores = window.web.strg('highscores');
     if(highscores)
       return JSON.parse(highscores);

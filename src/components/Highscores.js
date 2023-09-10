@@ -1,20 +1,24 @@
 function Highscores(){
+  const {_} = window.web;
   const locale = window.web.locale || 'id';
   const opt    = {dateStyle : 'full'};
   return (
-    <>
+    <ol>
       {
         window.web.getHighscores().map(
           score => (
-            <div>
-              {new Date(score.date).toLocaleDateString(locale, opt)}
-              &nbsp;-&nbsp;
-              {score.score}
-            </div>
+            <li>
+              <div>
+                {_('date') + ' : ' + new Date(score.date).toLocaleDateString(locale, opt)}
+              </div>
+              <div>
+                {_('score') + ' : ' + score.score}
+              </div>
+            </li>
           )
         )
       }
-    </>
+    </ol>
   );
 };
 

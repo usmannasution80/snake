@@ -8,5 +8,6 @@ export default {
   'score' : 'Skor : :score',
   'level' : 'Level :level',
   'game_over' : 'Game Over',
-  'ok' : 'Ok!'
+  'ok' : 'Ok!',
+  'date' : 'Tanggal'
 };

@@ -9,10 +9,10 @@ function Highscores(){
           score => (
             <li>
               <div>
-                {_('date') + ' : ' + new Date(score.date).toLocaleDateString(locale, opt)}
+                {_('date', {date:new Date(score.date).toLocaleDateString(locale, opt)})}
               </div>
               <div>
-                {_('score') + ' : ' + score.score}
+                {_('score', {score:score.score})}
               </div>
             </li>
           )

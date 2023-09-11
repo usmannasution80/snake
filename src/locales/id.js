@@ -9,5 +9,5 @@ export default {
   'level' : 'Level :level',
   'game_over' : 'Game Over',
   'ok' : 'Ok!',
-  'date' : 'Tanggal'
+  'date' : 'Tanggal : :date'
 };

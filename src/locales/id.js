@@ -9,5 +9,7 @@ export default {
   'level' : 'Level :level',
   'game_over' : 'Game Over',
   'ok' : 'Ok!',
-  'date' : 'Tanggal : :date'
+  'date' : 'Tanggal : :date',
+  'change_language' : 'Ganti Bahasa',
+  'delete_data' : 'Hapus Data'
 };

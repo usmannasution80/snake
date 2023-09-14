@@ -1,8 +1,16 @@
-import id from './locales/id';
+import locales from 'locales/locales';
 
 export default {
   _(key, values){
-    let dict = id;
+
+    let lang = window.web.strg('lang');
+    if(!lang)
+      lang = 'id';
+
+    let dict;
+    if(!(dict = locales[lang]))
+      dict = locales['id'];
+
     if(dict[key]){
       let val = dict[key];
       if(values){

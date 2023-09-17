@@ -10,7 +10,7 @@ export default {
     let dict;
     if(!(dict = locales[lang]))
       dict = locales['id'];
-
+console.log(locales[lang])
     if(dict[key]){
       let val = dict[key];
       if(values){

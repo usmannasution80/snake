@@ -146,8 +146,20 @@ function GameField(){
     moveTimeout.current = setTimeout(move, interval);
   };
 
-  window.web.navigationOnClick = (e, dir) => {
-    strg('direction', dir);
+  window.web.navigationOnClick = (e, direction) => {
+    const currentDirection = strg('direction') || 'right';
+
+    if(direction === 'left' && currentDirection === 'right')
+      return;
+    if(direction === 'right' && currentDirection === 'left')
+      return;
+    if(direction === 'up' && currentDirection === 'down')
+      return;
+    if(direction === 'down' && currentDirection === 'up')
+      return;
+    console.log(`direction : ${direction} - currentDirection ${currentDirection}`)
+    strg('direction', direction);
+
   };
 
   useEffect(() => {

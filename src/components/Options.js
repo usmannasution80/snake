@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import {Button} from '@mui/material';
+import DeleteDataDialog from 'components/DeleteDataDialog';
 
 function Options(){
 
@@ -9,6 +10,7 @@ function Options(){
     'delete_data'
   ];
   const [active, setActive] = useState(0);
+  const [deleteDialog, setDeleteDialog] = useState(false);
   const variant = idx => idx === active ? 'contained' : 'outlined';
 
   window.web.navigationOnClick = (e, dir) => {
@@ -24,7 +26,13 @@ function Options(){
     }
   };
 
-  window.web.selectOnClick = (e) => navigate(values[active].replace('_', '-'));
+  window.web.selectOnClick = (e) => {
+    if(active === 1)
+      setDeleteDialog(true);
+    else
+      navigate(values[active].replace('_', '-'));
+    
+  };
 
   let i = 0;
 
@@ -39,6 +47,9 @@ function Options(){
         sx={{my:1}}
         variant={variant(i)}
         children={_(values[i++])}/>
+      <DeleteDataDialog
+        open={deleteDialog}
+        onClose={e => setDeleteDialog(false)}/>
     </>
   );
 };
